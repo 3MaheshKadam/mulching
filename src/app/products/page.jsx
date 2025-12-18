@@ -8,9 +8,12 @@ import {
   FaClock,
   FaRecycle,
   FaChevronRight,
+  FaShieldAlt,
 } from "react-icons/fa";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import Link from "next/link";
+import Image from "next/image";
 
 const ProductCard = ({ product, index }) => {
   const controls = useAnimation();
@@ -40,45 +43,47 @@ const ProductCard = ({ product, index }) => {
       initial="hidden"
       animate={controls}
       variants={variants}
-      className={`mb-12 overflow-hidden rounded-2xl shadow-xl ${
+      className={`mb-8 overflow-hidden rounded-xl shadow-lg ${
         index % 2 === 0 ? "bg-white" : "bg-gray-50"
       }`}
     >
       <div className="flex flex-col lg:flex-row">
         <div className="lg:w-2/5 relative group overflow-hidden">
-          <img
+          <Image
             src={product.image}
             alt={product.name}
+            width={600}
+            height={400}
             className="w-full h-64 lg:h-auto object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
-            <h3 className="text-2xl font-bold text-white">{product.name}</h3>
+          <div className="absolute top-4 left-4">
+            <span className="bg-green-600 text-white px-3 py-1 rounded-full text-xs font-semibold">
+              {product.tag}
+            </span>
           </div>
         </div>
 
-        <div className="lg:w-3/5 p-8">
-          <h3 className="text-2xl font-bold text-gray-800 mb-4">
+        <div className="lg:w-3/5 p-6 lg:p-8">
+          <h3 className="text-2xl font-bold text-gray-900 mb-3">
             {product.name}
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-6">
+          <p className="text-gray-600 mb-4 text-sm">{product.description}</p>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 mb-6">
             {product.specs.map((spec, specIndex) => (
-              <div key={specIndex} className="flex items-start">
-                <div className="bg-green-100 p-1 rounded-full mr-3 mt-0.5">
-                  <FaChevronRight className="text-green-600 text-xs" />
-                </div>
-                <div>
-                  <p className="text-sm font-medium text-gray-600">
-                    {spec.label}
-                  </p>
-                  <p className="text-gray-800 font-semibold">{spec.value}</p>
-                </div>
+              <div key={specIndex} className="bg-gray-50 p-3 rounded-lg">
+                <p className="text-xs text-gray-500 mb-1">{spec.label}</p>
+                <p className="text-sm text-gray-900 font-semibold">{spec.value}</p>
               </div>
             ))}
           </div>
-          <button className="mt-4 bg-gradient-to-r from-green-600 to-emerald-600 text-white font-medium py-3 px-8 rounded-lg hover:from-green-700 hover:to-emerald-700 transition-all duration-300 shadow-md hover:shadow-lg flex items-center group">
-            Request Quote
-            <FaChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-          </button>
+
+          <Link href="/contact">
+            <button className="bg-green-600 text-white font-semibold py-2.5 px-6 rounded-lg hover:bg-green-700 transition-all duration-300 shadow-md hover:shadow-lg flex items-center group text-sm">
+              Request Quote
+              <FaChevronRight className="ml-2 group-hover:translate-x-1 transition-transform text-xs" />
+            </button>
+          </Link>
         </div>
       </div>
     </motion.div>
@@ -113,13 +118,13 @@ const BenefitItem = ({ benefit, index }) => {
       initial="hidden"
       animate={controls}
       variants={variants}
-      className="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-100 hover:border-green-100"
+      className="bg-white p-5 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 border border-gray-200"
     >
       <div className="flex items-start">
-        <div className="bg-green-100 p-3 rounded-full mr-4 text-green-600">
+        <div className="bg-green-100 p-2.5 rounded-lg mr-3 text-green-600">
           {benefit.icon}
         </div>
-        <p className="text-gray-700 font-medium">{benefit.text}</p>
+        <p className="text-gray-700 font-medium text-sm">{benefit.text}</p>
       </div>
     </motion.div>
   );
@@ -138,141 +143,150 @@ const ProductsPage = () => {
     }
   }, [controls, inView]);
 
-  const mulchFilmTypes = [
+  const mulchingProducts = [
     {
-      name: "Silver Black Mulch",
-      image: "/silver-black-mulch.jpg",
+      name: "Biodegradable Mulching Paper",
+      tag: "Best Seller",
+      image: "/biodegradable.jpg",
+      description: "100% biodegradable paper mulch that naturally decomposes within 3-6 months, enriching your soil while suppressing weeds and conserving water.",
       specs: [
         { label: "Width", value: "1 Mtr, 1.2 Mtr" },
-        { label: "Length", value: "400 Mtr, 800 Mtr, 1000 Mtr" },
-        { label: "Thickness", value: "20, 25, 30, 50, 100 Micron" },
-        { label: "Warranty", value: "3, 5, 8, 12 Months" },
-        { label: "Material", value: "LDPE/LLDPE" },
-        { label: "Colours", value: "Silver Black & White Black" },
-        { label: "Application", value: "Agricultural Farms, Horticulture" },
-        { label: "Packaging", value: "Rolls" },
+        { label: "Length", value: "400 Mtr, 800 Mtr" },
+        { label: "Thickness", value: "60-100 GSM" },
+        { label: "Color", value: "Black, Brown" },
+        { label: "Decomposition", value: "3-6 Months" },
+        { label: "Application", value: "All Crops" },
       ],
     },
     {
-      name: "Pyramid Mulch Film",
-      image: "/pyramid-mulch.jpg",
+      name: "Black Mulching Film",
+      tag: "Premium Quality",
+      image: "/black-mulching-film.jpg",
+      description: "High-quality black mulching film for excellent weed control and soil temperature regulation. Ideal for vegetables and row crops.",
       specs: [
         { label: "Width", value: "1 Mtr, 1.2 Mtr" },
         { label: "Length", value: "400 Mtr, 1000 Mtr" },
-        { label: "Types", value: "Gold, Diamond, Platinum" },
-        { label: "Warranty", value: "3, 5, 7 Months" },
+        { label: "Thickness", value: "25, 30, 50 Micron" },
+        { label: "UV Protection", value: "Up to 12 Months" },
         { label: "Material", value: "LDPE/LLDPE" },
-        { label: "Colours", value: "Silver Black & White Black" },
-        { label: "Application", value: "Agricultural Farms, Horticulture" },
-        { label: "Packaging", value: "Rolls" },
+        { label: "Application", value: "Vegetables, Fruits" },
       ],
     },
     {
-      name: "Non-Prime Mulch Films",
-      image: "/non-prime-mulch.jpg",
+      name: "Silver Black Mulch Film",
+      tag: "UV Protected",
+      image: "/silver.jfif",
+      description: "Silver-black mulching film that reflects heat while controlling weeds. Perfect for heat-sensitive crops and pest management.",
       specs: [
         { label: "Width", value: "1 Mtr, 1.2 Mtr" },
         { label: "Length", value: "400 Mtr, 1000 Mtr" },
-        { label: "Thickness", value: "20, 25, 30, 50, 100 Micron" },
-        { label: "Colours", value: "Silver Black" },
+        { label: "Thickness", value: "25, 30, 50 Micron" },
+        { label: "UV Protection", value: "Up to 12 Months" },
         { label: "Material", value: "LDPE/LLDPE" },
-        { label: "Application", value: "Agricultural Farms, Horticulture" },
-        { label: "Packaging", value: "Rolls" },
+        { label: "Application", value: "All Crops" },
       ],
     },
   ];
 
   const benefits = [
     {
-      icon: <FaTint className="text-xl" />,
-      text: "Stop moisture loss effectively",
+      icon: <FaTint className="text-lg" />,
+      text: "Save up to 50% water with reduced evaporation",
     },
-    { icon: <FaLeaf className="text-xl" />, text: "Control weeds precisely" },
-    {
-      icon: <FaRecycle className="text-xl" />,
-      text: "Reduce fertilizer usage",
-    },
-    {
-      icon: <FaLeaf className="text-xl" />,
-      text: "Prioritize eco-friendliness",
+    { 
+      icon: <FaLeaf className="text-lg" />, 
+      text: "Natural weed suppression - reduce labor by 60%" 
     },
     {
-      icon: <FaTint className="text-xl" />,
-      text: "Conserve water efficiently",
+      icon: <FaSeedling className="text-lg" />,
+      text: "Increase crop yield by 30-40%",
     },
     {
-      icon: <FaSeedling className="text-xl" />,
-      text: "Boost early and overall yield",
+      icon: <FaRecycle className="text-lg" />,
+      text: "100% biodegradable - enriches soil after use",
     },
-    { icon: <FaClock className="text-xl" />, text: "Save time and costs" },
-    { icon: <FaSun className="text-xl" />, text: "Drive genuine innovation" },
+    {
+      icon: <FaSun className="text-lg" />,
+      text: "Maintains optimal soil temperature",
+    },
+    {
+      icon: <FaShieldAlt className="text-lg" />,
+      text: "Protects crops from soil-borne diseases",
+    },
+    { 
+      icon: <FaClock className="text-lg" />, 
+      text: "Save time and reduce labor costs significantly" 
+    },
+    { 
+      icon: <FaLeaf className="text-lg" />, 
+      text: "Eco-friendly - no harmful residues" 
+    },
   ];
 
   const features = [
     {
-      icon: <FaSun className="text-3xl" />,
-      title: "UV Protection",
-      desc: "Unparalleled protection against harmful UV rays",
-    },
-    {
       icon: <FaRecycle className="text-3xl" />,
-      title: "Eco-friendly",
-      desc: "Sustainable solutions for modern farming",
+      title: "Biodegradable",
+      desc: "Naturally decomposes and enriches soil",
     },
     {
-      icon: <FaClock className="text-3xl" />,
-      title: "Cost-effective",
-      desc: "Save time and reduce operational costs",
+      icon: <FaTint className="text-3xl" />,
+      title: "Water Saving",
+      desc: "Conserve up to 50% water usage",
     },
     {
       icon: <FaSeedling className="text-3xl" />,
-      title: "Innovative",
-      desc: "Cutting-edge technology for better yields",
+      title: "Higher Yields",
+      desc: "30-40% increase in crop production",
+    },
+    {
+      icon: <FaClock className="text-3xl" />,
+      title: "Cost-Effective",
+      desc: "Reduce labor and operational costs",
     },
   ];
 
   return (
     <div className="bg-gray-50 pt-20">
-      {/* Hero Section with Parallax Effect */}
+      {/* Hero Section */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
-        className="relative overflow-hidden bg-gradient-to-r from-green-700 to-emerald-800 text-white py-24 md:py-32"
+        className="relative overflow-hidden bg-gradient-to-r from-green-700 to-green-800 text-white py-16 md:py-24"
       >
-        <div className="absolute inset-0 bg-[url('/agriculture-pattern.png')] opacity-10"></div>
+        <div className="absolute inset-0 opacity-10 bg-[url('/pattern.png')]"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <motion.h1
             initial={{ y: -20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4"
+            className="text-3xl md:text-4xl lg:text-5xl font-bold mb-3"
           >
-            Iris Polymers
+            Quality SRJ Polymers
           </motion.h1>
           <motion.p
             initial={{ y: -10, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-xl md:text-2xl mb-8 font-medium"
+            className="text-lg md:text-xl mb-6 font-medium"
           >
-            Empowering Crops with UV-Protected Mulch Films
+            Premium Biodegradable Mulching Solutions
           </motion.p>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="max-w-3xl mx-auto text-lg md:text-xl"
+            className="max-w-3xl mx-auto text-base md:text-lg"
           >
-            Unleashing the potential of highly UV protected mulch films for
-            superior crop production!
+            Empowering farmers with eco-friendly mulching paper that increases yields, conserves water, and protects the environment
           </motion.p>
         </div>
       </motion.div>
 
       {/* Product Introduction */}
-      <div className="container mx-auto px-4 py-16 md:py-24">
-        <div className="max-w-4xl mx-auto text-center mb-16">
+      <div className="container mx-auto px-4 py-12 md:py-16">
+        <div className="max-w-4xl mx-auto text-center mb-12">
           <motion.h2
             ref={ref}
             initial="hidden"
@@ -282,9 +296,9 @@ const ProductsPage = () => {
               hidden: { opacity: 0, y: 20 },
             }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-4xl font-bold text-gray-800 mb-6"
+            className="text-2xl md:text-3xl font-bold text-gray-900 mb-4"
           >
-            Our Premium Mulch Films
+            Our Premium Mulching Solutions
           </motion.h2>
           <motion.p
             initial="hidden"
@@ -294,16 +308,14 @@ const ProductsPage = () => {
               hidden: { opacity: 0, y: 20 },
             }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-gray-600 text-lg md:text-xl"
+            className="text-gray-600 text-base md:text-lg"
           >
-            Iris Polymers presents an extraordinary range of polyethylene mulch
-            films, skillfully crafted to offer unparalleled UV protection,
-            exceptional durability, and remarkable sustainability.
+            Quality SRJ Polymers offers a comprehensive range of mulching products designed to maximize crop productivity while promoting sustainable farming practices across India.
           </motion.p>
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -311,31 +323,31 @@ const ProductsPage = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-shadow duration-300 text-center"
+              className="bg-white p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow duration-300 text-center"
             >
-              <div className="text-green-500 mb-4 flex justify-center">
+              <div className="text-green-600 mb-3 flex justify-center">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold mb-2 text-black/70">
+              <h3 className="text-lg font-semibold mb-2 text-gray-900">
                 {feature.title}
               </h3>
-              <p className="text-gray-600">{feature.desc}</p>
+              <p className="text-gray-600 text-sm">{feature.desc}</p>
             </motion.div>
           ))}
         </div>
 
         {/* Benefits Section */}
-        <div className="mb-20">
+        <div className="mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-800"
+            className="text-2xl md:text-3xl font-bold text-center mb-10 text-gray-900"
           >
-            Benefits of IRIS Mulch Film
+            Benefits of Our Mulching Products
           </motion.h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
             {benefits.map((benefit, index) => (
               <BenefitItem key={index} benefit={benefit} index={index} />
             ))}
@@ -343,21 +355,50 @@ const ProductsPage = () => {
         </div>
 
         {/* Product Types */}
-        <div className="mb-20">
+        <div className="mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-4xl font-bold text-center mb-16 text-gray-800"
+            className="text-2xl md:text-3xl font-bold text-center mb-12 text-gray-900"
           >
-            Mulch Film Types
+            Our Product Range
           </motion.h2>
 
-          {mulchFilmTypes.map((product, index) => (
+          {mulchingProducts.map((product, index) => (
             <ProductCard key={index} product={product} index={index} />
           ))}
         </div>
+
+        {/* Applications Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="mb-16 bg-white rounded-xl p-8 shadow-sm"
+        >
+          <h3 className="text-2xl font-bold text-center mb-8 text-gray-900">
+            Suitable for All Crops
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+            {[
+              { name: "Vegetables", icon: "🥬", examples: "Tomatoes, Peppers, Cucumbers" },
+              { name: "Fruits", icon: "🍓", examples: "Strawberries, Melons, Watermelons" },
+              { name: "Cash Crops", icon: "🌾", examples: "Cotton, Sugarcane, Tobacco" },
+              { name: "Floriculture", icon: "🌺", examples: "Roses, Marigolds, Gerberas" },
+            ].map((crop, index) => (
+              <div key={index} className="bg-green-50 p-5 rounded-lg">
+                <div className="text-4xl mb-2">{crop.icon}</div>
+                <h4 className="text-base font-semibold text-gray-900 mb-1">
+                  {crop.name}
+                </h4>
+                <p className="text-xs text-gray-600">{crop.examples}</p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* CTA Section */}
         <motion.div
@@ -365,21 +406,22 @@ const ProductsPage = () => {
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
           viewport={{ once: true }}
-          className="bg-gradient-to-r from-green-600 to-emerald-700 text-white rounded-2xl p-10 text-center relative overflow-hidden"
+          className="bg-gradient-to-r from-green-600 to-green-700 text-white rounded-xl p-8 md:p-10 text-center relative overflow-hidden"
         >
-          <div className="absolute inset-0 bg-[url('/texture.png')] opacity-10"></div>
+          <div className="absolute inset-0 opacity-10 bg-[url('/texture.png')]"></div>
           <div className="relative z-10">
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+            <h3 className="text-2xl md:text-3xl font-bold mb-3">
               Ready to Boost Your Crop Yield?
             </h3>
-            <p className="mb-8 max-w-2xl mx-auto text-lg">
-              Our expert team is ready to help you select the perfect mulch film
-              solution for your agricultural needs.
+            <p className="mb-6 max-w-2xl mx-auto text-base md:text-lg">
+              Our expert team is ready to help you select the perfect mulching solution for your farming needs.
             </p>
-            <button className="bg-white text-green-700 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-lg hover:shadow-xl flex items-center mx-auto group">
-              Contact Our Specialists
-              <FaChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
-            </button>
+            <Link href="/contact">
+              <button className="bg-white text-green-700 hover:bg-gray-100 font-semibold py-3 px-8 rounded-lg transition duration-300 shadow-lg hover:shadow-xl flex items-center mx-auto group">
+                Get Free Consultation
+                <FaChevronRight className="ml-2 group-hover:translate-x-1 transition-transform" />
+              </button>
+            </Link>
           </div>
         </motion.div>
       </div>

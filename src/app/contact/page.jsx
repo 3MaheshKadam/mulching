@@ -1,76 +1,118 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { FaPhone, FaEnvelope, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 
 const ContactSection = () => {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    subject: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Add your form submission logic here
+    console.log("Form submitted:", formData);
+    // You can add email service integration here
+    alert("Thank you for your message! We will get back to you soon.");
+    setFormData({
+      name: "",
+      email: "",
+      phone: "",
+      subject: "",
+      message: "",
+    });
+  };
+
   return (
-    <section id="contact" className="py-16 bg-gray-50">
+    <section id="contact" className="py-20 bg-gray-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-4">Contact Us</h2>
-          <p className="text-gray-600 max-w-2xl mx-auto">
-            Have questions about our agricultural films? Get in touch with our
-            team for expert advice and support.
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Contact Us
+          </h2>
+          <p className="text-gray-600 max-w-2xl mx-auto text-base">
+            Have questions about our biodegradable mulching products? Get in
+            touch with our team for expert advice and support.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-7xl mx-auto">
           {/* Contact Information */}
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold text-gray-800 mb-6">
-              Our Office
+          <div className="bg-white p-8 rounded-xl shadow-md">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6">
+              Get In Touch
             </h3>
 
             <div className="space-y-6">
               <div className="flex items-start">
-                <div className="bg-green-100 p-3 rounded-full mr-4">
-                  <FaMapMarkerAlt className="text-green-600 text-lg" />
+                <div className="bg-green-100 p-3 rounded-lg mr-4 flex-shrink-0">
+                  <FaMapMarkerAlt className="text-green-600 text-xl" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-800">Address</h4>
-                  <p className="text-gray-600 mt-1">
-                    Industrial Area, Pune
+                  <h4 className="font-semibold text-gray-900 mb-1">Address</h4>
+                  <p className="text-gray-600">
+                    Quality SRJ Polymers
                     <br />
-                    Maharashtra, India - 411019
+                    Industrial Area
+                    <br />
+                    India
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start">
-                <div className="bg-green-100 p-3 rounded-full mr-4">
-                  <FaPhone className="text-green-600 text-lg" />
+                <div className="bg-green-100 p-3 rounded-lg mr-4 flex-shrink-0">
+                  <FaPhone className="text-green-600 text-xl" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-800">Phone</h4>
-                  <p className="text-gray-600 mt-1">
-                    +91 98765 43210
-                    <br />
-                    +91 98765 43211
+                  <h4 className="font-semibold text-gray-900 mb-1">Phone</h4>
+                  <p className="text-gray-600">
+                    <a
+                      href="tel:+919096534555"
+                      className="text-gray-600 hover:text-green-600 transition-colors"
+                    >
+                      +91 90965 34555
+                    </a>
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start">
-                <div className="bg-green-100 p-3 rounded-full mr-4">
-                  <FaEnvelope className="text-green-600 text-lg" />
+                <div className="bg-green-100 p-3 rounded-lg mr-4 flex-shrink-0">
+                  <FaEnvelope className="text-green-600 text-xl" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-800">Email</h4>
-                  <p className="text-gray-600 mt-1">
-                    info@mulchingpaper.com
-                    <br />
-                    sales@mulchingpaper.com
+                  <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
+                  <p className="text-gray-600">
+                    <a
+                      href="mailto:sales@qualitysrjpolymers.com"
+                      className="text-gray-600 hover:text-green-600 transition-colors break-all"
+                    >
+                      sales@qualitysrjpolymers.com
+                    </a>
                   </p>
                 </div>
               </div>
 
               <div className="flex items-start">
-                <div className="bg-green-100 p-3 rounded-full mr-4">
-                  <FaClock className="text-green-600 text-lg" />
+                <div className="bg-green-100 p-3 rounded-lg mr-4 flex-shrink-0">
+                  <FaClock className="text-green-600 text-xl" />
                 </div>
                 <div>
-                  <h4 className="font-medium text-gray-800">Working Hours</h4>
-                  <p className="text-gray-600 mt-1">
+                  <h4 className="font-semibold text-gray-900 mb-1">
+                    Business Hours
+                  </h4>
+                  <p className="text-gray-600">
                     Monday - Saturday: 9:00 AM - 6:00 PM
                     <br />
                     Sunday: Closed
@@ -78,42 +120,73 @@ const ContactSection = () => {
                 </div>
               </div>
             </div>
+
+            {/* Additional Info */}
+            <div className="mt-8 p-4 bg-green-50 rounded-lg border border-green-100">
+              <h4 className="font-semibold text-gray-900 mb-2">
+                Why Choose Us?
+              </h4>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-green-600 rounded-full mr-2"></span>
+                  15+ Years Industry Experience
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-green-600 rounded-full mr-2"></span>
+                  ISO Certified Quality Standards
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-green-600 rounded-full mr-2"></span>
+                  Pan India Delivery Network
+                </li>
+                <li className="flex items-center">
+                  <span className="w-2 h-2 bg-green-600 rounded-full mr-2"></span>
+                  Expert Technical Support
+                </li>
+              </ul>
+            </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h3 className="text-xl font-semibold text-gray-800 mb-6">
+          <div className="bg-white p-8 rounded-xl shadow-md">
+            <h3 className="text-2xl font-semibold text-gray-900 mb-6">
               Send Us a Message
             </h3>
 
-            <form className="space-y-4">
+            <form className="space-y-5" onSubmit={handleSubmit}>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
                   <label
                     htmlFor="name"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-gray-900 mb-2"
                   >
-                    Name
+                    Full Name *
                   </label>
                   <input
                     type="text"
                     id="name"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                    placeholder="Your name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900"
+                    placeholder="Your full name"
                   />
                 </div>
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-sm font-medium text-gray-700 mb-1"
+                    className="block text-sm font-medium text-gray-900 mb-2"
                   >
-                    Email
+                    Email Address *
                   </label>
                   <input
                     type="email"
                     id="email"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                    placeholder="Your email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900"
+                    placeholder="your@email.com"
                   />
                 </div>
               </div>
@@ -121,73 +194,68 @@ const ContactSection = () => {
               <div>
                 <label
                   htmlFor="phone"
-                  className="block text-sm font-medium text-gray-700 mb-1"
+                  className="block text-sm font-medium text-gray-900 mb-2"
                 >
-                  Phone
+                  Phone Number *
                 </label>
                 <input
                   type="tel"
                   id="phone"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="Your phone number"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900"
+                  placeholder="+91 XXXXX XXXXX"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="subject"
-                  className="block text-sm font-medium text-gray-700 mb-1"
+                  className="block text-sm font-medium text-gray-900 mb-2"
                 >
-                  Subject
+                  Subject *
                 </label>
                 <input
                   type="text"
                   id="subject"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="Subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all text-gray-900"
+                  placeholder="Product inquiry, Quote request, etc."
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="message"
-                  className="block text-sm font-medium text-gray-700 mb-1"
+                  className="block text-sm font-medium text-gray-900 mb-2"
                 >
-                  Message
+                  Message *
                 </label>
                 <textarea
                   id="message"
-                  rows="4"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-green-500"
-                  placeholder="Your message"
+                  rows="5"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:border-transparent transition-all resize-none text-gray-900"
+                  placeholder="Tell us about your requirements..."
                 ></textarea>
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-green-600 text-white py-3 px-6 rounded-md hover:bg-green-700 transition duration-300 font-medium"
+                className="w-full bg-green-600 text-white py-3 px-6 rounded-lg hover:bg-green-700 transition duration-300 font-semibold text-base shadow-md hover:shadow-lg"
               >
                 Send Message
               </button>
-            </form>
-          </div>
-        </div>
 
-        {/* Map Section */}
-        <div className="mt-12 bg-white p-4 rounded-lg shadow-md">
-          <h3 className="text-xl font-semibold text-gray-800 mb-4">
-            Find Us on Map
-          </h3>
-          <div className="aspect-w-16 aspect-h-9 bg-gray-200 rounded-md overflow-hidden">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.265588856342!2d73.91455641541671!3d18.562061287384868!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c147b8b3a3bf%3A0x6f7fdcc8e4d6c77e!2sPune%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin"
-              width="100%"
-              height="450"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              className="rounded-md"
-            ></iframe>
+              <p className="text-xs text-gray-500 text-center mt-4">
+                We'll respond to your inquiry within 24 business hours
+              </p>
+            </form>
           </div>
         </div>
       </div>

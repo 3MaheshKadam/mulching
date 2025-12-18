@@ -3,101 +3,95 @@ import React from "react";
 import { Award, Users, Target, Eye, Leaf, Globe, Shield } from "lucide-react";
 
 const AboutUs = () => {
-  const leaders = [
+  const values = [
     {
-      name: "John Smith",
-      position: "CEO & Founder",
-      image: "/api/placeholder/200/200",
-      description: "20+ years in agricultural innovation",
+      icon: <Shield className="w-8 h-8" />,
+      title: "Quality First",
+      description: "ISO certified manufacturing with rigorous quality control ensuring consistent excellence in every roll."
     },
     {
-      name: "Sarah Johnson",
-      position: "CTO",
-      image: "/api/placeholder/200/200",
-      description: "Expert in sustainable farming solutions",
+      icon: <Leaf className="w-8 h-8" />,
+      title: "Sustainability",
+      description: "100% biodegradable products that enrich soil and promote eco-friendly farming practices."
     },
     {
-      name: "Michael Chen",
-      position: "VP Operations",
-      image: "/api/placeholder/200/200",
-      description: "Global supply chain specialist",
+      icon: <Users className="w-8 h-8" />,
+      title: "Customer Focus",
+      description: "Dedicated support and expert guidance to help farmers maximize their agricultural success."
     },
+    {
+      icon: <Globe className="w-8 h-8" />,
+      title: "Innovation",
+      description: "Continuous research and development to deliver cutting-edge mulching solutions."
+    }
   ];
 
-  const teamMembers = [
+  const achievements = [
     {
-      name: "Emily Davis",
-      role: "R&D Manager",
-      image: "/api/placeholder/150/150",
+      number: "15+",
+      label: "Years Experience",
+      icon: "📅"
     },
     {
-      name: "Robert Wilson",
-      role: "Quality Assurance",
-      image: "/api/placeholder/150/150",
+      number: "10,000+",
+      label: "Happy Farmers",
+      icon: "👨‍🌾"
     },
     {
-      name: "Lisa Brown",
-      role: "Marketing Director",
-      image: "/api/placeholder/150/150",
+      number: "Pan India",
+      label: "Distribution",
+      icon: "🇮🇳"
     },
     {
-      name: "David Miller",
-      role: "Sales Manager",
-      image: "/api/placeholder/150/150",
-    },
-    {
-      name: "Anna Garcia",
-      role: "Sustainability Officer",
-      image: "/api/placeholder/150/150",
-    },
-    {
-      name: "James Taylor",
-      role: "Operations Lead",
-      image: "/api/placeholder/150/150",
-    },
-  ];
-
-  const awards = [
-    {
-      title: "Best Agricultural Innovation Award",
-      year: "2023",
-      org: "AgriTech Excellence",
-    },
-    {
-      title: "Sustainable Farming Solution",
-      year: "2022",
-      org: "Green Agriculture Forum",
-    },
-    {
-      title: "Industry Leader Recognition",
-      year: "2021",
-      org: "Global Farming Association",
-    },
-    {
-      title: "Quality Excellence Award",
-      year: "2020",
-      org: "International Standards Council",
-    },
+      number: "100%",
+      label: "Biodegradable",
+      icon: "🌱"
+    }
   ];
 
   const certificates = [
-    "ISO 9001:2015 Quality Management",
+    "ISO 9001:2015 Quality Management System",
     "ISO 14001:2015 Environmental Management",
-    "FSSC 22000 Food Safety",
-    "BRC Global Standard",
-    "Organic Certification",
+    "Made in India - Supporting Local Economy",
     "Biodegradable Materials Certification",
+    "Agricultural Safety Standards",
+    "Quality Assurance Certification",
+  ];
+
+  const benefits = [
+    {
+      title: "Water Conservation",
+      description: "Save up to 50% water with reduced evaporation",
+      icon: "💧"
+    },
+    {
+      title: "Weed Suppression",
+      description: "Natural weed control reducing labor costs by 60%",
+      icon: "🌿"
+    },
+    {
+      title: "Increased Yield",
+      description: "30-40% higher crop productivity",
+      icon: "📈"
+    },
+    {
+      title: "Soil Health",
+      description: "Biodegradable material enriches soil after decomposition",
+      icon: "🌾"
+    }
   ];
 
   return (
-    <div className="min-h-screen bg-white pt-10">
+    <div className="min-h-screen bg-white pt-20">
       {/* About Us Header */}
       <section className="py-16 bg-gradient-to-r from-green-50 to-emerald-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl font-bold text-gray-800 mb-4">About Us</h1>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Pioneering sustainable mulching solutions for modern agriculture
+          <div className="text-center mb-12">
+            <h1 className="text-4xl lg:text-5xl font-bold text-gray-900 mb-4">
+              About Quality SRJ Polymers
+            </h1>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Leading manufacturer of premium biodegradable mulching paper in India
             </p>
           </div>
 
@@ -105,41 +99,27 @@ const AboutUs = () => {
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div className="order-2 lg:order-1">
               <img
-                src="/api/placeholder/600/400"
-                alt="Mulching Paper Company"
-                className="rounded-2xl shadow-2xl w-full h-96 object-cover"
+                src="/about.jpeg"
+                alt="Quality SRJ Polymers Manufacturing"
+                className="rounded-2xl shadow-xl w-full h-96 object-cover"
               />
             </div>
-            <div className="order-1 lg:order-2 space-y-6">
-              <h2 className="text-3xl font-bold text-gray-800 mb-6">
-                Revolutionizing Agriculture Through Innovation
+            <div className="order-1 lg:order-2 space-y-4">
+              <h2 className="text-3xl font-bold text-gray-900 mb-4">
+                Transforming Agriculture Through Innovation
               </h2>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                <strong>MULCHING PAPER</strong> is a pioneering organization
-                that has established itself as a trusted leader in sustainable
-                agricultural solutions. Founded in 2012, we have built our
-                reputation as a premier manufacturer of biodegradable mulching
-                papers and eco-friendly farming materials.
+              <p className="text-base text-gray-700 leading-relaxed">
+                <strong>Quality SRJ Polymers</strong> is a trusted leader in sustainable agricultural solutions, specializing in the manufacturing of high-quality biodegradable mulching paper. Established with a vision to revolutionize farming practices, we have been serving the Indian agricultural community for over 15 years.
               </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                We are passionate about empowering farmers to enhance crop
-                yield, reduce water consumption, and minimize environmental
-                impact through our innovative and high-quality biodegradable
-                mulching solutions. With operations spanning across 8 countries
-                and robust distribution networks across North America, Europe,
-                and Asia, we serve a global farming community.
+              <p className="text-base text-gray-700 leading-relaxed">
+                We are passionate about empowering farmers to enhance crop yields, reduce water consumption, and minimize environmental impact through our innovative mulching solutions. Our products are designed to address the critical challenges faced by modern farmers - from water scarcity and weed management to soil health and crop productivity.
               </p>
-              <p className="text-lg text-gray-700 leading-relaxed">
-                As we look toward the future, we are expanding our presence in
-                emerging markets across Africa and South America to better serve
-                farmers worldwide and help them achieve sustainable agricultural
-                success.
+              <p className="text-base text-gray-700 leading-relaxed">
+                With a robust distribution network across India and a commitment to quality excellence, we have become the preferred choice for thousands of farmers growing vegetables, fruits, and cash crops. Our ISO-certified manufacturing facility ensures consistent quality and reliability in every product.
               </p>
               <div className="bg-green-100 p-4 rounded-lg mt-6">
-                <p className="text-green-800 font-semibold italic">
-                  "Growth Unleashed: Transformed from a small startup to a
-                  global leader in 2018, pioneering sustainable agriculture
-                  solutions worldwide."
+                <p className="text-green-800 font-semibold">
+                  "Committed to sustainable farming practices that benefit both farmers and the environment, helping build a greener future for Indian agriculture."
                 </p>
               </div>
             </div>
@@ -150,194 +130,150 @@ const AboutUs = () => {
       {/* Vision & Mission */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-12">
-            <div className="bg-gradient-to-br from-green-500 to-emerald-600 p-8 rounded-2xl text-white">
-              <div className="flex items-center mb-6">
-                <Eye className="w-8 h-8 mr-4" />
+          <div className="grid md:grid-cols-2 gap-8">
+            <div className="bg-gradient-to-br from-green-600 to-green-700 p-8 rounded-xl text-white">
+              <div className="flex items-center mb-4">
+                <Eye className="w-8 h-8 mr-3" />
                 <h3 className="text-2xl font-bold">Our Vision</h3>
               </div>
-              <p className="text-lg leading-relaxed">
-                To be the global leader in sustainable mulching solutions,
-                transforming agriculture through innovative, eco-friendly
-                products that enhance crop productivity while preserving our
-                planet for future generations.
+              <p className="text-base leading-relaxed">
+                To be India's most trusted manufacturer of biodegradable mulching solutions, transforming agriculture through innovative, eco-friendly products that enhance crop productivity while preserving our environment for future generations.
               </p>
             </div>
-            <div className="bg-gradient-to-br from-blue-500 to-indigo-600 p-8 rounded-2xl text-white">
-              <div className="flex items-center mb-6">
-                <Target className="w-8 h-8 mr-4" />
+            <div className="bg-gradient-to-br from-blue-600 to-blue-700 p-8 rounded-xl text-white">
+              <div className="flex items-center mb-4">
+                <Target className="w-8 h-8 mr-3" />
                 <h3 className="text-2xl font-bold">Our Mission</h3>
               </div>
-              <p className="text-lg leading-relaxed">
-                To provide farmers worldwide with premium biodegradable mulching
-                papers that increase crop yields, conserve water, suppress weeds
-                naturally, and promote sustainable farming practices through
-                continuous innovation and excellence.
+              <p className="text-base leading-relaxed">
+                To provide farmers across India with premium biodegradable mulching paper that increases crop yields, conserves water, suppresses weeds naturally, and promotes sustainable farming practices through continuous innovation and unwavering quality standards.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Meet Our Leaders */}
+      {/* Core Values */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">
-              Meet Our Leaders
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Our Core Values
             </h2>
-            <p className="text-xl text-gray-600">
-              Visionary leaders driving agricultural innovation
-            </p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8">
-            {leaders.map((leader, index) => (
-              <div
-                key={index}
-                className="bg-white rounded-2xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
-              >
-                <img
-                  src={leader.image}
-                  alt={leader.name}
-                  className="w-full h-64 object-cover"
-                />
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-gray-800 mb-2">
-                    {leader.name}
-                  </h3>
-                  <p className="text-green-600 font-semibold mb-3">
-                    {leader.position}
-                  </p>
-                  <p className="text-gray-600">{leader.description}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Our Team */}
-      <section className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">Our Team</h2>
-            <p className="text-xl text-gray-600">
-              Dedicated professionals committed to agricultural excellence
-            </p>
-          </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member, index) => (
-              <div key={index} className="text-center group">
-                <div className="relative mb-4">
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-32 h-32 rounded-full mx-auto object-cover shadow-lg group-hover:shadow-xl transition-shadow duration-300"
-                  />
-                  <div className="absolute inset-0 bg-green-500 rounded-full opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                </div>
-                <h3 className="text-lg font-semibold text-gray-800 mb-1">
-                  {member.name}
-                </h3>
-                <p className="text-green-600 font-medium">{member.role}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Awards & Recognition */}
-      <section className="py-16 bg-gradient-to-r from-green-50 to-emerald-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">
-              Awards & Recognition
-            </h2>
-            <p className="text-xl text-gray-600">
-              Celebrating our achievements in agricultural innovation
+            <p className="text-lg text-gray-600">
+              The principles that guide everything we do
             </p>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {awards.map((award, index) => (
+            {values.map((value, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-xl shadow-lg text-center hover:shadow-xl transition-shadow duration-300"
+                className="bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-200"
               >
-                <Award className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
-                <h3 className="text-lg font-bold text-gray-800 mb-2">
-                  {award.title}
+                <div className="text-green-600 mb-4">{value.icon}</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-3">
+                  {value.title}
                 </h3>
-                <p className="text-green-600 font-semibold mb-1">
-                  {award.year}
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  {value.description}
                 </p>
-                <p className="text-gray-600 text-sm">{award.org}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Certificates */}
+      {/* Key Benefits */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-800 mb-4">
-              Certifications
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Why Farmers Choose Us
             </h2>
-            <p className="text-xl text-gray-600">
-              Quality assurance through recognized standards
+            <p className="text-lg text-gray-600">
+              Proven results that make a real difference
             </p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {certificates.map((cert, index) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-r from-blue-50 to-indigo-50 p-6 rounded-xl border-l-4 border-blue-500 hover:shadow-lg transition-shadow duration-300"
+                className="bg-green-50 p-6 rounded-xl border border-green-200 hover:border-green-400 transition-colors duration-300"
               >
-                <div className="flex items-center">
-                  <Shield className="w-8 h-8 text-blue-500 mr-4 flex-shrink-0" />
-                  <p className="text-gray-800 font-semibold">{cert}</p>
-                </div>
+                <div className="text-4xl mb-3">{benefit.icon}</div>
+                <h3 className="text-lg font-bold text-gray-900 mb-2">
+                  {benefit.title}
+                </h3>
+                <p className="text-sm text-gray-700">{benefit.description}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Slogan Section with Farming Background */}
+      {/* Achievements */}
+      <section className="py-16 bg-gradient-to-r from-green-50 to-emerald-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">
+              Our Journey in Numbers
+            </h2>
+            <p className="text-lg text-gray-600">
+              Milestones that reflect our commitment to excellence
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {achievements.map((achievement, index) => (
+              <div
+                key={index}
+                className="bg-white p-8 rounded-xl shadow-md text-center hover:shadow-lg transition-shadow duration-300"
+              >
+                <div className="text-4xl mb-3">{achievement.icon}</div>
+                <div className="text-3xl font-bold text-green-600 mb-2">
+                  {achievement.number}
+                </div>
+                <p className="text-sm text-gray-600 font-medium">
+                  {achievement.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Slogan Section */}
       <section
-        className="py-12 bg-cover bg-center bg-no-repeat relative"
+        className="py-16 bg-cover bg-center bg-no-repeat relative"
         style={{
           backgroundImage:
-            'linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url("https://images.unsplash.com/photo-1500382017468-9049fed747ef?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2073&q=80")',
+            'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("/home.jpeg")',
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-green-900/80 to-emerald-900/80"></div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <div className="flex justify-center mb-8">
-            <Leaf className="w-16 h-16 text-green-400" />
+          <div className="flex justify-center mb-6">
+            <Leaf className="w-12 h-12 text-green-400" />
           </div>
-          <h2 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-            Nurturing Nature,
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+            Growing Together,
             <br />
-            <span className="text-green-400">Harvesting Future</span>
+            <span className="text-green-400">Sustaining Forever</span>
           </h2>
-          <p className="text-2xl text-gray-200 mb-8 max-w-4xl mx-auto">
-            Where sustainable innovation meets agricultural excellence - growing
-            together for a greener tomorrow
+          <p className="text-xl text-gray-200 mb-8 max-w-3xl mx-auto">
+            Empowering Indian farmers with innovative mulching solutions for a sustainable and prosperous agricultural future
           </p>
-          <div className="flex justify-center space-x-8 text-white/80">
+          <div className="flex flex-wrap justify-center gap-6 text-white/90">
             <div className="flex items-center">
-              <Globe className="w-6 h-6 mr-2" />
-              <span>Global Reach</span>
+              <Globe className="w-5 h-5 mr-2" />
+              <span className="text-sm">Pan India Reach</span>
             </div>
             <div className="flex items-center">
-              <Leaf className="w-6 h-6 mr-2" />
-              <span>Eco-Friendly</span>
+              <Leaf className="w-5 h-5 mr-2" />
+              <span className="text-sm">100% Eco-Friendly</span>
             </div>
             <div className="flex items-center">
-              <Users className="w-6 h-6 mr-2" />
-              <span>Farmer First</span>
+              <Users className="w-5 h-5 mr-2" />
+              <span className="text-sm">Farmer First Approach</span>
             </div>
           </div>
         </div>
