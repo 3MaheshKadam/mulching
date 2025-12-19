@@ -61,11 +61,13 @@ const ContactSection = () => {
                 <div>
                   <h4 className="font-semibold text-gray-900 mb-1">Address</h4>
                   <p className="text-gray-600">
-                    Quality SRJ Polymers
+                    Quality SRJ Polymers LLP
                     <br />
-                    Industrial Area
+                    Plot No 13, MIDC, Junnar Telco Road,
                     <br />
-                    India
+                    Kandali, District: Pune - Pin Code: 412 412
+                    <br />
+                    Maharashtra, India
                   </p>
                 </div>
               </div>
@@ -95,10 +97,10 @@ const ContactSection = () => {
                   <h4 className="font-semibold text-gray-900 mb-1">Email</h4>
                   <p className="text-gray-600">
                     <a
-                      href="mailto:sales@qualitysrjpolymers.com"
+                      href="mailto:qualitysrjpolymers5@gmail.com"
                       className="text-gray-600 hover:text-green-600 transition-colors break-all"
                     >
-                      sales@qualitysrjpolymers.com
+                      qualitysrjpolymers5@gmail.com
                     </a>
                   </p>
                 </div>

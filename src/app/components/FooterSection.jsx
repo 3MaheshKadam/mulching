@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 const FooterSection = () => {
   const quickLinks = [
@@ -21,17 +22,17 @@ const FooterSection = () => {
     {
       icon: "📍",
       title: "Head Office",
-      content: "Industrial Area, India",
+      content: "Plot No 13, MIDC, Junnar Telco Road, Kandali, District: Pune - 412 412, Maharashtra, India",
     },
     {
       icon: "📞",
       title: "Phone",
-      content: "+91 9096534555",
+      content: "+91 90965 34555",
     },
     { 
       icon: "✉️", 
       title: "Email", 
-      content: "sales@qualitysrjpolymers.com" 
+      content: "qualitysrjpolymers5@gmail.com" 
     },
   ];
 
@@ -42,11 +43,17 @@ const FooterSection = () => {
           {/* Company Info */}
           <div className="lg:col-span-1">
             <div className="flex items-center mb-4">
-              <div className="w-10 h-10 bg-green-600 rounded-lg flex items-center justify-center mr-3">
-                <span className="text-xl">🌱</span>
+              <div className="w-10 h-10 bg-white rounded-lg flex items-center justify-center mr-3 overflow-hidden">
+                <Image
+                  src="/logo.jpeg"
+                  alt="Quality SRJ Polymers Logo"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
               </div>
               <h3 className="text-lg font-bold text-white">
-                Quality SRJ Polymers
+                Quality SRJ Polymers LLP
               </h3>
             </div>
             <p className="text-gray-400 text-sm mb-4">
@@ -132,7 +139,7 @@ const FooterSection = () => {
         {/* Bottom Footer */}
         <div className="flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            © {new Date().getFullYear()} Quality SRJ Polymers. All rights reserved.
+            © {new Date().getFullYear()} Quality SRJ Polymers LLP. All rights reserved.
           </p>
           <div className="flex space-x-4">
             <Link

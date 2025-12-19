@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function AgricultureNavbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,31 +52,31 @@ export default function AgricultureNavbar() {
       <div className="max-w-8xl mx-auto px-6 lg:px-8 xl:px-12">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo Section */}
-          <div className="flex items-center group cursor-pointer">
+          <Link href="/" className="flex items-center group cursor-pointer">
             <div className="flex items-center space-x-3">
               {/* Logo Icon */}
-              <div className="relative w-10 h-10 lg:w-12 lg:h-12 bg-gradient-to-br from-green-600 via-green-700 to-green-800 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105">
-                <svg
-                  className="w-5 h-5 lg:w-6 lg:h-6 text-white"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path d="M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z" />
-                </svg>
-                <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-green-700 rounded-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+              <div className="relative w-10 h-10 lg:w-12 lg:h-12 bg-white rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 transform group-hover:scale-105 overflow-hidden border border-green-100">
+                <Image
+                  src="/logo.jpeg"
+                  alt="Quality SRJ Polymers Logo"
+                  width={48}
+                  height={48}
+                  className="object-contain p-1"
+                />
+                <div className="absolute -inset-0.5 bg-gradient-to-r from-green-500 to-green-700 rounded-xl opacity-0 group-hover:opacity-10 transition-opacity duration-300"></div>
               </div>
 
               {/* Logo Text */}
               <div className="flex flex-col">
                 <div className="text-lg lg:text-xl xl:text-2xl font-black text-transparent bg-gradient-to-r from-green-700 via-green-800 to-green-900 bg-clip-text tracking-tight leading-none">
-                  Quality SRJ Polymers
+                  Quality SRJ Polymers LLP
                 </div>
                 <div className="text-[10px] lg:text-xs text-green-600/80 font-semibold tracking-wider uppercase mt-0.5">
                   Agricultural Innovation
                 </div>
               </div>
             </div>
-          </div>
+          </Link>
 
           {/* Desktop Navigation Links */}
           <div className="hidden lg:flex items-center space-x-1 xl:space-x-2">
@@ -99,10 +100,11 @@ export default function AgricultureNavbar() {
           {/* CTA Button & Mobile Menu Button */}
           <div className="flex items-center space-x-3">
             {/* CTA Button */}
-            <button className="hidden sm:inline-flex items-center space-x-2 px-5 lg:px-6 py-2.5 lg:py-3 bg-gradient-to-r from-green-600 via-green-700 to-green-800 text-white text-sm lg:text-base font-bold rounded-xl hover:from-green-700 hover:via-green-800 hover:to-green-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-300/50 relative overflow-hidden group">
-              <Link href="/contact" className="relative z-10">
-                Contact Us
-              </Link>
+            <Link
+              href="/contact"
+              className="hidden sm:inline-flex items-center space-x-2 px-5 lg:px-6 py-2.5 lg:py-3 bg-gradient-to-r from-green-600 via-green-700 to-green-800 text-white text-sm lg:text-base font-bold rounded-xl hover:from-green-700 hover:via-green-800 hover:to-green-900 transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl focus:outline-none focus:ring-4 focus:ring-green-300/50 relative overflow-hidden group"
+            >
+              <span className="relative z-10">Contact Us</span>
               <svg
                 className="w-4 h-4 relative z-10 group-hover:translate-x-1 transition-transform duration-300"
                 fill="none"
@@ -119,7 +121,7 @@ export default function AgricultureNavbar() {
 
               {/* Button Shine Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-            </button>
+            </Link>
 
             {/* Mobile Menu Button */}
             <button
@@ -190,14 +192,12 @@ export default function AgricultureNavbar() {
             }`}
             style={{ transitionDelay: "500ms" }}
           >
-            <button className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-600 via-green-700 to-green-800 text-white font-bold text-base rounded-xl hover:from-green-700 hover:via-green-800 hover:to-green-900 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300/50 shadow-lg hover:shadow-xl transform hover:scale-[1.02] relative overflow-hidden group">
-              <Link
-                href="/contact"
-                className="relative z-10"
-                onClick={() => setIsMenuOpen(false)}
-              >
-                Enquire Now
-              </Link>
+            <Link
+              href="/contact"
+              className="w-full flex items-center justify-center space-x-2 px-6 py-3 bg-gradient-to-r from-green-600 via-green-700 to-green-800 text-white font-bold text-base rounded-xl hover:from-green-700 hover:via-green-800 hover:to-green-900 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-green-300/50 shadow-lg hover:shadow-xl transform hover:scale-[1.02] relative overflow-hidden group"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              <span className="relative z-10">Enquire Now</span>
               <svg
                 className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform duration-300"
                 fill="none"
@@ -214,7 +214,7 @@ export default function AgricultureNavbar() {
 
               {/* Button Shine Effect */}
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -skew-x-12 transform -translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
-            </button>
+            </Link>
           </div>
         </div>
       </div>
