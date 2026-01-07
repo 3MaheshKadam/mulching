@@ -85,9 +85,11 @@ RkkFc/lzMeX7FdnkiptFDUI=
     await transporter.sendMail({
       from: '"Website Contact" <qualitysrjpolymers5@gmail.com>',
       to: "sales@qualitysrjpolymers.com",
+      // to: "maheshkadam9298@gmail.com",
+
       replyTo: email,
       subject: `New Contact Form Submission - ${subject}`,
-     html: `
+      html: `
 <!DOCTYPE html>
 <html lang="en">
 <head>
